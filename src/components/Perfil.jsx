@@ -1,7 +1,8 @@
 import React from 'react';
 import { FaLinkedinIn, FaGithub, FaEnvelope } from 'react-icons/fa';
 import FotoPerfil from '../assets/foto.jpg';
-
+import { FiDownload } from "react-icons/fi";
+import { FaWhatsapp } from "react-icons/fa";
 
 export const Perfil = () => {
   return (
@@ -50,22 +51,28 @@ export const Perfil = () => {
       </div>
 
       {/* Botões */}
-      <div className="flex flex-col gap-2 w-full pt-4">
-        <a
-          href="mailto:janielecristina539@gmail.com"
-          className="w-full bg-[#0f0f0f] py-2 rounded-xl hover:bg-green-500 transition"
-        >
-          Entrar em contato
-        </a>
-        <a
-          href="/Curriculo-Janiele.pdf"
-          download="Curriculo-Janiele.pdf"
-          className="w-full bg-[#0f0f0f] py-2 rounded-xl hover:bg-green-500 transition"
-        >
-          Baixar CV
-        </a>
+        <div className="flex gap-4 mt-6 w-full">
+      {/* Botão WhatsApp */}
+      <a
+        href="https://wa.me/5511999999999"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex-1 flex items-center justify-center gap-2 bg-zinc-900 text-white font-medium px-4 py-3 rounded-lg hover:bg-green-500 hover:text-black transition"
+      >
+        <FaWhatsapp className="text-xl" />
+        Contato
+      </a>
 
-      </div>
+      {/* Botão Currículo */}
+      <a
+        href="/Curriculo-Janiele.pdf"
+        download
+        className="flex-1 flex items-center justify-center gap-2 bg-zinc-900 text-white font-medium px-4 py-3 rounded-lg hover:bg-zinc-700 transition"
+      >
+        <FiDownload className="text-xl" />
+        Currículo
+      </a>
+    </div> 
     </div>
   );
 };

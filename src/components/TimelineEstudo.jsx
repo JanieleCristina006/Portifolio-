@@ -1,16 +1,54 @@
+import { motion } from 'framer-motion'
+import { FaRocket, FaReact, FaPalette, FaSuitcase } from 'react-icons/fa'
+
 export const TimelineEstudo = () => {
+  const passos = [
+    {
+      icone: <FaRocket />,
+      texto: 'Início com HTML & CSS',
+      ano: '2022',
+    },
+    {
+      icone: <FaReact />,
+      texto: 'Foco em React',
+      ano: '2023',
+    },
+    {
+      icone: <FaPalette />,
+      texto: 'Estudo em UI/UX',
+      ano: '2024',
+    },
+    {
+      icone: <FaSuitcase />,
+      texto: 'Em busca de oportunidades',
+      ano: '2025',
+    },
+  ]
+
   return (
-    <div className="space-y-6 text-sm text-gray-400">
+    <div className="space-y-6">
       <p className="italic text-center md:text-left text-gray-500">
         "Transformando linhas de código em experiências incríveis."
       </p>
 
-      <ul className="space-y-2">
-        <li>🚀 Início com HTML & CSS — <span className="text-white">2022</span></li>
-        <li>⚛️ Foco em React — <span className="text-white">2023</span></li>
-        <li>🎨 Estudo em UI/UX — <span className="text-white">2024</span></li>
-        <li>💼 Em busca de oportunidades — <span className="text-white">2025</span></li>
-      </ul>
+      <div className="space-y-4">
+        {passos.map((passo, index) => (
+          <motion.div
+            key={index}
+            className="flex items-start gap-3"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ delay: index * 0.15, duration: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <div className="text-green-400 text-lg mt-1">{passo.icone}</div>
+            <div>
+              <p className="text-sm text-gray-300 font-medium">{passo.texto}</p>
+              <span className="text-xs text-gray-500">{passo.ano}</span>
+            </div>
+          </motion.div>
+        ))}
+      </div>
     </div>
-  );
-};
+  )
+}

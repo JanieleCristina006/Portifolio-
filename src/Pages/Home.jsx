@@ -16,7 +16,6 @@ export const Home = () => {
         <Perfil />
       </aside>
 
-      {/* Coluna 3: Conteúdo rolável que preenche o resto da tela */}
       <main className="flex-1 overflow-y-auto bg-[#1f1f1f] rounded-2xl p-8 shadow-lg">
         <Conteudo />
       </main>

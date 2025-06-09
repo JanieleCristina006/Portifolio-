@@ -1,21 +1,34 @@
+import { motion } from 'framer-motion'
+
 export const Apresentacao = () => {
   return (
-    <div className="text-center md:text-left space-y-4">
-      <p className="text-lg md:text-xl text-gray-400">
+    <section className="max-w-5xl mx-auto px-4 space-y-8">
+      <motion.h1
+        className="text-3xl md:text-4xl font-semibold text-white"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         Olá, eu sou a <span className="text-green-400">Janiele Cristina</span>
-      </p>
+      </motion.h1>
 
-      <h1 className="text-2xl md:text-2xl font-bold leading-tight">
-        <span className="bg-green-400 text-black px-2 py-1 rounded-md inline-block">
-          Desenvolvedora Front-End
-        </span>
-      </h1>
+      <motion.h2
+        className="inline-block bg-green-500 text-black font-bold text-xl px-4 py-1 rounded-md shadow-lg"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.2, duration: 0.4 }}
+      >
+        Desenvolvedora Front-End
+      </motion.h2>
 
-      <p className="text-gray-400 max-w-2xl text-sm md:text-base">
-        Apaixonada por tecnologia e interfaces modernas, estou sempre aprimorando minhas habilidades com
-        <strong> HTML, CSS, JavaScript, React e boas práticas de UI/UX</strong>.
-        Busco entregar experiências mais intuitivas, funcionais e acessíveis ao usuário.
-      </p>
-    </div>
-  );
-};
+      <motion.p
+        className="text-gray-300 max-w-2xl"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.4, duration: 0.5 }}
+      >
+        Apaixonada por tecnologia e interfaces modernas, estou sempre aprimorando minhas habilidades com <strong>HTML, CSS, JavaScript, React</strong> e <strong>UI/UX</strong>. Busco criar experiências intuitivas e acessíveis.
+      </motion.p>
+    </section>
+  )
+}
