@@ -1,11 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { FiHome, FiUser, FiFolder, FiEdit2, FiMapPin } from "react-icons/fi";
+import {
+  FiHome,
+  FiUser,
+  FiFolder,
+  FiEdit2,
+  FiMapPin
+} from "react-icons/fi";
+import { FiMail } from "react-icons/fi";
+
+import { FaGraduationCap } from "react-icons/fa";
 import { Tooltip } from "primereact/tooltip";
+import { TopbarMobile } from "./TopbarMobile";
+
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 
 export const Botoes = () => {
   const [activeSection, setActiveSection] = useState("inicio");
+  const [isMobile, setIsMobile] = useState(false);
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -15,47 +27,62 @@ export const Botoes = () => {
   };
 
   useEffect(() => {
-  const sections = ["inicio", "sobre", "projetos", "experiencia", "contato"];
+    const sections = [
+      "inicio",
+      "sobre",
+      "experiencia",
+      "formacao",
+      "projetos",
+      "contato"
+    ];
 
-  const handleScroll = () => {
-    const middleY = window.innerHeight / 2;
+    const observers = [];
 
-    let closestSection = sections[0];
-    let closestDistance = Infinity;
-
-    for (const id of sections) {
+    sections.forEach((id) => {
       const section = document.getElementById(id);
       if (section) {
-        const rect = section.getBoundingClientRect();
-        const distance = Math.abs(rect.top - middleY);
-
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestSection = id;
-        }
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              setActiveSection(id);
+            }
+          },
+          {
+            threshold: 0.6
+          }
+        );
+        observer.observe(section);
+        observers.push(observer);
       }
-    }
+    });
 
-    setActiveSection(closestSection);
-  };
+    return () => {
+      observers.forEach((observer) => observer.disconnect());
+    };
+  }, []);
 
-  window.addEventListener("scroll", handleScroll);
-  handleScroll(); // já calcula a seção atual ao carregar
-  return () => window.removeEventListener("scroll", handleScroll);
-}, []);
-
-
+  if (isMobile) {
+    return (
+      <TopbarMobile
+        scrollToSection={scrollToSection}
+        activeSection={activeSection}
+      />
+    );
+  }
 
   return (
     <>
-      {/* Tooltips */}
+      {/* Tooltips para desktop */}
       <Tooltip target=".tooltip-home" />
       <Tooltip target=".tooltip-user" />
-      <Tooltip target=".tooltip-folder" />
       <Tooltip target=".tooltip-edit" />
+      <Tooltip target=".tooltip-educacao" />
+      <Tooltip target=".tooltip-folder" />
       <Tooltip target=".tooltip-map" />
 
-      <nav className="flex flex-col gap-6 text-white items-center">
+      {/* Menu lateral */}
+      <nav className="hidden md:flex flex-col gap-6 text-white items-center">
+        {/* Início */}
         <button
           className={`tooltip-home p-3 rounded-full transition ${
             activeSection === "inicio" ? "bg-green-500" : "hover:bg-green-500"
@@ -66,6 +93,7 @@ export const Botoes = () => {
           <FiHome size={20} />
         </button>
 
+        {/* Sobre */}
         <button
           className={`tooltip-user p-3 rounded-full transition ${
             activeSection === "sobre" ? "bg-green-500" : "hover:bg-green-500"
@@ -76,6 +104,29 @@ export const Botoes = () => {
           <FiUser size={20} />
         </button>
 
+        {/* Experiência */}
+        <button
+          className={`tooltip-edit p-3 rounded-full transition ${
+            activeSection === "experiencia" ? "bg-green-500" : "hover:bg-green-500"
+          }`}
+          data-pr-tooltip="Experiência"
+          onClick={() => scrollToSection("experiencia")}
+        >
+          <FiEdit2 size={20} />
+        </button>
+
+        {/* Formação */}
+        <button
+          className={`tooltip-educacao p-3 rounded-full transition ${
+            activeSection === "formacao" ? "bg-green-500" : "hover:bg-green-500"
+          }`}
+          data-pr-tooltip="Formação"
+          onClick={() => scrollToSection("formacao")}
+        >
+          <FaGraduationCap size={20} />
+        </button>
+
+        {/* Projetos */}
         <button
           className={`tooltip-folder p-3 rounded-full transition ${
             activeSection === "projetos" ? "bg-green-500" : "hover:bg-green-500"
@@ -86,18 +137,7 @@ export const Botoes = () => {
           <FiFolder size={20} />
         </button>
 
-        <button
-          className={`tooltip-edit p-3 rounded-full transition ${
-            activeSection === "experiencia"
-              ? "bg-green-500"
-              : "hover:bg-green-500"
-          }`}
-          data-pr-tooltip="Experiência"
-          onClick={() => scrollToSection("experiencia")}
-        >
-          <FiEdit2 size={20} />
-        </button>
-
+        {/* Contato */}
         <button
           className={`tooltip-map p-3 rounded-full transition ${
             activeSection === "contato" ? "bg-green-500" : "hover:bg-green-500"
@@ -105,7 +145,8 @@ export const Botoes = () => {
           data-pr-tooltip="Contato"
           onClick={() => scrollToSection("contato")}
         >
-          <FiMapPin size={20} />
+          <FiMail size={20} />
+
         </button>
       </nav>
     </>

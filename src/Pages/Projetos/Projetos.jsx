@@ -7,7 +7,7 @@ import Header from "./Header";
 
 
 const OPTIONS = {}
-const SLIDE_COUNT = 7
+const SLIDE_COUNT = 3
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
 export const Projetos = () => {

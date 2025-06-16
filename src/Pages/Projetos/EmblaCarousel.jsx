@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import ClassNames from 'embla-carousel-class-names'
 import {
@@ -7,31 +7,34 @@ import {
   usePrevNextButtons
 } from './EmblaCarouselArrowButtons'
 import { DotButton, useDotButton } from './EmblaCarouselDotButton'
+import Modal from './Modal'
+import { projeto } from './projeto' 
 
-const EmblaCarousel = (props) => {
-  const { slides, options } = props
+const EmblaCarousel = ({ options }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [ClassNames()])
+  const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
+  const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } = usePrevNextButtons(emblaApi)
 
-  const { selectedIndex, scrollSnaps, onDotButtonClick } =
-    useDotButton(emblaApi)
+  const [modalAberto, setModalAberto] = useState(false)
+  const [projetoSelecionado, setProjetoSelecionado] = useState(null)
 
-  const {
-    prevBtnDisabled,
-    nextBtnDisabled,
-    onPrevButtonClick,
-    onNextButtonClick
-  } = usePrevNextButtons(emblaApi)
+  // Ao clicar na imagem, abre o modal com o projeto clicado
+  const abrirModal = (projeto) => {
+    setProjetoSelecionado(projeto)
+    setModalAberto(true)
+  }
 
   return (
     <div className="embla">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
-          {slides.map((index) => (
-            <div className="embla__slide" key={index}>
+          {projeto.map((projeto) => (
+            <div className="embla__slide" key={projeto.id}>
               <img
-                className="embla__slide__img"
-                src={`https://picsum.photos/600/350?v=${index}`}
-                alt="Your alt text"
+                className="embla__slide__img cursor-pointer"
+                src={projeto.imagem}
+                alt={projeto.titulo}
+                onClick={() => abrirModal(projeto)}
               />
             </div>
           ))}
@@ -43,19 +46,23 @@ const EmblaCarousel = (props) => {
           <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
           <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
         </div>
-
         <div className="embla__dots">
           {scrollSnaps.map((_, index) => (
             <DotButton
               key={index}
               onClick={() => onDotButtonClick(index)}
-              className={'embla__dot'.concat(
-                index === selectedIndex ? ' embla__dot--selected' : ''
-              )}
+              className={'embla__dot'.concat(index === selectedIndex ? ' embla__dot--selected' : '')}
             />
           ))}
         </div>
       </div>
+
+      {/* Modal do projeto selecionado */}
+      <Modal
+        isOpen={modalAberto}
+        onClose={() => setModalAberto(false)}
+        projeto={projetoSelecionado}
+      />
     </div>
   )
 }

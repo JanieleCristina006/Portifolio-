@@ -1,7 +1,7 @@
-import { motion } from 'framer-motion'
-import { FaRocket, FaReact, FaPalette, FaSuitcase } from 'react-icons/fa'
+import { motion } from 'framer-motion';
+import { FaRocket, FaReact, FaPalette, FaSuitcase } from 'react-icons/fa';
 
-export const TimelineEstudo = () => {
+export const ApresentacaoCompleta = () => {
   const passos = [
     {
       icone: <FaRocket />,
@@ -23,14 +23,22 @@ export const TimelineEstudo = () => {
       texto: 'Em busca de oportunidades',
       ano: '2025',
     },
-  ]
+  ];
 
   return (
-    <div className="space-y-6">
-      <p className="italic text-center md:text-left text-gray-500">
+    <div className="space-y-8 text-left">
+      {/* Frase superior */}
+      <motion.p
+        className="italic text-gray-500"
+        initial={{ opacity: 0, x: -10 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
+      >
         "Transformando linhas de código em experiências incríveis."
-      </p>
+      </motion.p>
 
+      {/* Timeline */}
       <div className="space-y-4">
         {passos.map((passo, index) => (
           <motion.div
@@ -50,5 +58,5 @@ export const TimelineEstudo = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};

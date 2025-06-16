@@ -23,8 +23,8 @@ const experiencias = [
 
 export const Experiencia = () => {
   return (
-    <section className="space-y-6 mt-10 px-4 max-w-3xl mx-auto">
-      <h2 className="text-3xl font-bold text-green-400 text-center">
+    <section className="space-y-6 mt-10  mx-auto">
+      <h2 className="text-3xl font-bold text-green-400">
         Minha Experiência
       </h2>
 

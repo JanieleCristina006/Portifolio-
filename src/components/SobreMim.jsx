@@ -3,9 +3,9 @@ import { FaLaptopCode, FaRocket, FaCode, FaEnvelope } from 'react-icons/fa'
 
 export const SobreMim = () => {
   return (
-    <section className="max-w-4xl mx-auto px-4 py-12">
+    <section className="mx-auto py-12">
       <motion.h2
-        className="text-3xl font-bold text-green-400 text-center mb-10"
+        className="text-3xl font-bold text-green-400  mb-10"
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}

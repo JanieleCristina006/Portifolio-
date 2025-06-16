@@ -1,30 +1,17 @@
-import React from 'react';
-import { FaGraduationCap, FaCertificate } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import React from 'react'
+import { ArcherContainer, ArcherElement } from 'react-archer'
+import { FaGraduationCap } from 'react-icons/fa'
+import { motion } from 'framer-motion'
 
 export const Formacao = () => {
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0 },
-  };
-
-  const graduacoes = [
-    {
-      curso: "Bacharelado em Ciência da Computação",
-      instituicao: "Cruzeiro do Sul Virtual",
-      periodo: "Nov de 2023 – Dez de 2025",
-      status: "Em andamento",
-    },
-    {
-      curso: "Bacharelado em Ciência da Computação",
-      instituicao: "UNIFENAS – Universidade Prof. Edson Antônio Velano",
-      periodo: "2022 – (trancado)",
-      status: "Trancado",
-    },
-  ];
+  }
 
   return (
-    <section className="text-white px-6 py-12 max-w-4xl mx-auto">
+    <div className="w-full px-4 py-16 max-w-6xl mx-auto text-white">
+      
       {/* Título principal */}
       <motion.h2
         className="text-3xl font-bold text-green-500 mb-10 flex items-center gap-2"
@@ -33,70 +20,76 @@ export const Formacao = () => {
         variants={fadeInUp}
         transition={{ duration: 0.6 }}
       >
-        <FaGraduationCap className="text-green-500 text-3xl" />
+        <FaGraduationCap className="text-3xl" />
         Formação Acadêmica
       </motion.h2>
 
-      {/* Lista de graduações */}
-      <div className="space-y-6 mb-12">
-        {graduacoes.map((item, index) => (
-          <motion.div
-            key={index}
-            className="bg-zinc-800 border-l-4 border-green-500 p-5 rounded-lg shadow-md"
-            initial="hidden"
-            animate="visible"
-            variants={fadeInUp}
-            transition={{ duration: 0.5, delay: 0.2 * index }}
-          >
-            <div className="flex flex-col">
-              <h3 className="text-xl font-bold">{item.curso}</h3>
-              <p className="text-sm text-gray-300">{item.instituicao}</p>
-              <p className="text-sm text-gray-400 italic">{item.periodo}</p>
-              <span className={`mt-2 inline-block text-xs font-medium px-2 py-1 rounded-full ${
-                item.status === "Em andamento"
-                  ? "bg-green-600/20 text-green-400"
-                  : "bg-red-600/20 text-red-400"
-              }`}>
-                {item.status}
-              </span>
-            </div>
-          </motion.div>
-        ))}
-      </div>
+      <ArcherContainer strokeColor="limegreen">
+        <div className="flex flex-col items-center gap-12">
 
-      {/* Certificados */}
-      <motion.h3
-        className="text-2xl font-bold text-green-500 mb-6 flex items-center gap-2"
-        initial="hidden"
-        animate="visible"
-        variants={fadeInUp}
-        transition={{ duration: 0.6 }}
-      >
-        <FaCertificate className="text-green-500 text-2xl" />
-        Certificados
-      </motion.h3>
-
-      <motion.div
-        className="bg-zinc-800 border-l-4 border-green-500 p-5 rounded-lg shadow-md"
-        initial="hidden"
-        animate="visible"
-        variants={fadeInUp}
-        transition={{ duration: 0.5, delay: 0.4 }}
-      >
-        <div className="flex flex-col">
-          <h4 className="text-lg font-semibold">NLW Unite - ReactJS</h4>
-          <p className="text-sm text-gray-300">Rocketseat</p>
-          <p className="text-sm text-gray-400 italic">Emitido em abril de 2024</p>
-          <a
-            href="https://app.rocketseat.com.br/certificates/0341edbc-b135-4e90-9e87-3a9b9bfc9308"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-green-400 text-sm underline hover:text-green-300 mt-2"
+          {/* Bloco central */}
+          <ArcherElement
+            id="nucleo"
+            relations={[
+              { targetId: 'form1', targetAnchor: 'top', sourceAnchor: 'bottom' },
+              { targetId: 'form2', targetAnchor: 'top', sourceAnchor: 'bottom' },
+            ]}
           >
-            Ver credencial
-          </a>
+            <motion.div
+              className="bg-zinc-800 text-white px-6 py-3 rounded-xl shadow border border-green-500 font-semibold"
+              initial="hidden"
+              animate="visible"
+              variants={fadeInUp}
+              transition={{ duration: 0.5 }}
+            >
+              Minha Jornada Acadêmica
+            </motion.div>
+          </ArcherElement>
+
+          {/* Cards de formação */}
+          <div className="flex flex-wrap justify-center items-start gap-12">
+            
+            {/* CARD ATUAL DESTACADO */}
+            <ArcherElement id="form1">
+              <motion.div
+                className="bg-zinc-900 p-5 w-72 rounded-xl border-l-4 border-green-500 shadow-md ring-2 ring-green-400/40 hover:ring-green-300 transition-all"
+                initial="hidden"
+                animate="visible"
+                variants={fadeInUp}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <div className="flex items-center justify-between mb-1">
+                  <h3 className="text-lg font-bold">Cruzeiro do Sul Virtual</h3>
+                  <span className="bg-green-600 text-xs px-2 py-0.5 rounded-full font-semibold">Atual</span>
+                </div>
+                <p className="text-sm text-gray-300">
+                  Bacharelado em Ciência da Computação
+                </p>
+                <p className="text-xs text-gray-400 mt-1 italic">
+                  Nov de 2023 – Dez de 2025 • Em andamento
+                </p>
+              </motion.div>
+            </ArcherElement>
+
+            {/* CARD CONCLUÍDO */}
+            <ArcherElement id="form2">
+              <motion.div
+                className="bg-zinc-900 p-5 w-72 rounded-xl border-l-4 border-green-500 shadow-md transition-all"
+                initial="hidden"
+                animate="visible"
+                variants={fadeInUp}
+                transition={{ duration: 0.5, delay: 0.4 }}
+              >
+                <h3 className="text-lg font-bold mb-1">UNIFENAS</h3>
+                <p className="text-sm text-gray-300">
+                  Bacharelado em Ciência da Computação
+                </p>
+                <p className="text-xs text-gray-400 mt-1 italic">2022 – 2023</p>
+              </motion.div>
+            </ArcherElement>
+          </div>
         </div>
-      </motion.div>
-    </section>
-  );
-};
+      </ArcherContainer>
+    </div>
+  )
+}
