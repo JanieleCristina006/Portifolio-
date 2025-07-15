@@ -1,33 +1,43 @@
 import { motion } from 'framer-motion';
-import { FaRocket, FaReact, FaPalette, FaSuitcase } from 'react-icons/fa';
+import {
+  FaSearch,
+  FaLaptopCode,
+  FaPalette,
+  FaRocket,
+  FaCode,
+  FaLightbulb,
+} from 'react-icons/fa';
 
 export const ApresentacaoCompleta = () => {
-  const passos = [
+  const qualidades = [
     {
-      icone: <FaRocket />,
-      texto: 'Início com HTML & CSS',
-      ano: '2022',
+      icone: <FaSearch />,
+      texto: 'Curiosa e focada em aprender continuamente',
     },
     {
-      icone: <FaReact />,
-      texto: 'Foco em React',
-      ano: '2023',
+      icone: <FaLaptopCode />,
+      texto: 'Experiência prática com projetos pessoais',
     },
     {
       icone: <FaPalette />,
-      texto: 'Estudo em UI/UX',
-      ano: '2024',
+      texto: 'Foco em criar interfaces acessíveis e modernas',
     },
     {
-      icone: <FaSuitcase />,
-      texto: 'Em busca de oportunidades',
-      ano: '2025',
+      icone: <FaRocket />,
+      texto: 'Pronta para atuar como Desenvolvedora Front-End',
+    },
+    {
+      icone: <FaCode />,
+      texto: 'Conhecimentos sólidos em HTML, CSS, JavaScript e React',
+    },
+    {
+      icone: <FaLightbulb />,
+      texto: 'Transformo ideias em soluções visuais intuitivas',
     },
   ];
 
   return (
     <div className="space-y-8 text-left">
-      {/* Frase superior */}
       <motion.p
         className="italic text-gray-500"
         initial={{ opacity: 0, x: -10 }}
@@ -38,9 +48,8 @@ export const ApresentacaoCompleta = () => {
         "Transformando linhas de código em experiências incríveis."
       </motion.p>
 
-      {/* Timeline */}
       <div className="space-y-4">
-        {passos.map((passo, index) => (
+        {qualidades.map((item, index) => (
           <motion.div
             key={index}
             className="flex items-start gap-3"
@@ -49,11 +58,8 @@ export const ApresentacaoCompleta = () => {
             transition={{ delay: index * 0.15, duration: 0.4 }}
             viewport={{ once: true }}
           >
-            <div className="text-green-400 text-lg mt-1">{passo.icone}</div>
-            <div>
-              <p className="text-sm text-gray-300 font-medium">{passo.texto}</p>
-              <span className="text-xs text-gray-500">{passo.ano}</span>
-            </div>
+            <div className="text-green-400 text-lg mt-1">{item.icone}</div>
+            <p className="text-sm text-gray-300 font-medium">{item.texto}</p>
           </motion.div>
         ))}
       </div>

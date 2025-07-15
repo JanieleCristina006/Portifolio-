@@ -4,20 +4,18 @@ import {
   FiUser,
   FiFolder,
   FiEdit2,
-  FiMapPin
+  FiMail
 } from "react-icons/fi";
-import { FiMail } from "react-icons/fi";
-
 import { FaGraduationCap } from "react-icons/fa";
 import { Tooltip } from "primereact/tooltip";
-import { TopbarMobile } from "./TopbarMobile";
+import { MobileSidebar } from "./MobileSidebar";
 
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 
 export const Botoes = () => {
   const [activeSection, setActiveSection] = useState("inicio");
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -47,9 +45,7 @@ export const Botoes = () => {
               setActiveSection(id);
             }
           },
-          {
-            threshold: 0.6
-          }
+          { threshold: 0.6 }
         );
         observer.observe(section);
         observers.push(observer);
@@ -61,18 +57,30 @@ export const Botoes = () => {
     };
   }, []);
 
+ 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  
   if (isMobile) {
     return (
-      <TopbarMobile
+      <MobileSidebar
         scrollToSection={scrollToSection}
         activeSection={activeSection}
       />
     );
   }
 
+  
   return (
     <>
-      {/* Tooltips para desktop */}
+      
       <Tooltip target=".tooltip-home" />
       <Tooltip target=".tooltip-user" />
       <Tooltip target=".tooltip-edit" />
@@ -80,11 +88,11 @@ export const Botoes = () => {
       <Tooltip target=".tooltip-folder" />
       <Tooltip target=".tooltip-map" />
 
-      {/* Menu lateral */}
+     
       <nav className="hidden md:flex flex-col gap-6 text-white items-center">
-        {/* Início */}
+        
         <button
-          className={`tooltip-home p-3 rounded-full transition ${
+          className={`tooltip-home p-3 cursor-pointer rounded-full transition ${
             activeSection === "inicio" ? "bg-green-500" : "hover:bg-green-500"
           }`}
           data-pr-tooltip="Início"
@@ -93,9 +101,9 @@ export const Botoes = () => {
           <FiHome size={20} />
         </button>
 
-        {/* Sobre */}
+       
         <button
-          className={`tooltip-user p-3 rounded-full transition ${
+          className={`tooltip-user p-3 cursor-pointer rounded-full transition ${
             activeSection === "sobre" ? "bg-green-500" : "hover:bg-green-500"
           }`}
           data-pr-tooltip="Sobre"
@@ -104,9 +112,9 @@ export const Botoes = () => {
           <FiUser size={20} />
         </button>
 
-        {/* Experiência */}
+        
         <button
-          className={`tooltip-edit p-3 rounded-full transition ${
+          className={`tooltip-edit p-3 cursor-pointer rounded-full transition ${
             activeSection === "experiencia" ? "bg-green-500" : "hover:bg-green-500"
           }`}
           data-pr-tooltip="Experiência"
@@ -115,20 +123,20 @@ export const Botoes = () => {
           <FiEdit2 size={20} />
         </button>
 
-        {/* Formação */}
-        <button
-          className={`tooltip-educacao p-3 rounded-full transition ${
+        
+        {/* <button
+          className={`tooltip-educacao p-3 cursor-pointer rounded-full transition ${
             activeSection === "formacao" ? "bg-green-500" : "hover:bg-green-500"
           }`}
           data-pr-tooltip="Formação"
           onClick={() => scrollToSection("formacao")}
         >
           <FaGraduationCap size={20} />
-        </button>
+        </button> */}
 
-        {/* Projetos */}
+        
         <button
-          className={`tooltip-folder p-3 rounded-full transition ${
+          className={`tooltip-folder p-3 cursor-pointer rounded-full transition ${
             activeSection === "projetos" ? "bg-green-500" : "hover:bg-green-500"
           }`}
           data-pr-tooltip="Projetos"
@@ -137,16 +145,14 @@ export const Botoes = () => {
           <FiFolder size={20} />
         </button>
 
-        {/* Contato */}
         <button
-          className={`tooltip-map p-3 rounded-full transition ${
+          className={`tooltip-map p-3 cursor-pointer rounded-full transition ${
             activeSection === "contato" ? "bg-green-500" : "hover:bg-green-500"
           }`}
           data-pr-tooltip="Contato"
           onClick={() => scrollToSection("contato")}
         >
           <FiMail size={20} />
-
         </button>
       </nav>
     </>

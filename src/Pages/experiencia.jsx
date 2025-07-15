@@ -1,72 +1,58 @@
-import { Timeline } from 'rsuite'
-import 'rsuite/Timeline/styles/index.css'
 import { motion } from 'framer-motion'
-import { FaBriefcase, FaGraduationCap } from 'react-icons/fa'
 
 const experiencias = [
   {
-    tipo: 'trabalho',
-    data: 'Nov 2024 - Fev 2025',
+    data: 'Nov 2024 – Fev 2025',
     titulo: 'Desenvolvedora Front-End Jr',
-    local: 'Grupo Awtech · Presencial · Alfenas, MG',
-    tecnologias: 'Vue.js, Git, entre outras.',
+    empresa: 'Grupo Awtech',
+    local: 'Presencial · Alfenas, MG',
+    tecnologias: 'Vue.js, Git, entre outras.'
   },
   {
-    tipo: 'trabalho',
-    data: 'Mar 2024 - Ago 2024',
+    data: 'Mar 2024 – Ago 2024',
     titulo: 'Desenvolvedora / Mentora',
-    local: 'Programar Com Você · Estágio Remoto',
-    tecnologias: 'HTML, CSS, JavaScript, React, Styled Components, Git e GitHub.',
-  },
-  
+    empresa: 'Programar Com Você',
+    local: 'Estágio Remoto',
+    tecnologias: 'HTML, CSS, JavaScript, React, Styled Components, Git e GitHub.'
+  }
 ]
 
 export const Experiencia = () => {
   return (
-    <section className="space-y-6 mt-10  mx-auto">
-      <h2 className="text-3xl font-bold text-green-400">
-        Minha Experiência
-      </h2>
-
-      <Timeline
-        style={{
-          '--rs-timeline-dot-bg': '#22c55e',
-          '--rs-timeline-item-content-padding': '0.5rem 0',
-        }}
-        className="!text-white"
+    <section className="w-full max-w-6xl mx-auto px-4 py-16 sm:py-20">
+      <motion.h2
+        className="text-2xl sm:text-3xl font-bold text-green-400 mb-10"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
       >
-        {experiencias.map((exp, index) => {
-          const Icon =
-            exp.tipo === 'formacao' ? FaGraduationCap : FaBriefcase
+        Experiência
+      </motion.h2>
 
-          return (
-            <Timeline.Item
-              key={index}
-              dot={
-                <div className="w-4 h-4 bg-green-500 rounded-full flex items-center justify-center text-white text-xs">
-                  <Icon className="text-[10px]" />
-                </div>
-              }
-            >
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <p className="text-sm text-gray-400">{exp.data}</p>
-                <h3 className="text-lg font-semibold text-white">
-                  {exp.titulo}
-                </h3>
-                <p className="text-gray-400 text-sm">{exp.local}</p>
-                <p className="text-gray-300 text-sm mt-1">
-                  Tecnologias: {exp.tecnologias}
-                </p>
-              </motion.div>
-            </Timeline.Item>
-          )
-        })}
-      </Timeline>
+      <div className="relative border-l-[3px] border-green-500 ml-2 sm:ml-4">
+        {experiencias.map((exp, index) => (
+          <motion.div
+            key={index}
+            className="mb-10 sm:mb-12 pl-6 relative"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            viewport={{ once: true }}
+          >
+            <span className="absolute left-[-9px] top-6 w-4 h-4 bg-green-500 rounded-full border-4 border-zinc-900"></span>
+
+            <div className="bg-zinc-900 shadow-md p-4 sm:p-6 rounded-xl">
+              <p className="text-xs sm:text-sm text-gray-400 mb-1">{exp.data}</p>
+              <h3 className="text-base sm:text-lg font-semibold text-white">{exp.titulo}</h3>
+              <p className="text-sm text-gray-300 italic mb-1">
+                {exp.empresa} · {exp.local}
+              </p>
+              <p className="text-sm text-gray-400">Tecnologias: {exp.tecnologias}</p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
     </section>
   )
 }
