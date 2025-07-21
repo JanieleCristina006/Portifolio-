@@ -18,7 +18,7 @@ const EmblaCarousel = ({ options }) => {
   const [modalAberto, setModalAberto] = useState(false)
   const [projetoSelecionado, setProjetoSelecionado] = useState(null)
 
-  // Ao clicar na imagem, abre o modal com o projeto clicado
+ 
   const abrirModal = (projeto) => {
     setProjetoSelecionado(projeto)
     setModalAberto(true)
@@ -57,7 +57,7 @@ const EmblaCarousel = ({ options }) => {
         </div>
       </div>
 
-      {/* Modal do projeto selecionado */}
+      
       <Modal
         isOpen={modalAberto}
         onClose={() => setModalAberto(false)}

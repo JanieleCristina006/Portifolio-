@@ -11,7 +11,7 @@ import { Contato } from './Contato';
 export const Conteudo = () => {
   return (
     <>
-      <div className="scroll-smooth space-y-24 text-white relative">
+      <div className="scroll-smooth space-y-12 text-white relative">
         
         <section id="inicio" className="px-4 w-full max-w-6xl mx-auto space-y-12  pb-12">
           <Apresentacao />
@@ -32,11 +32,11 @@ export const Conteudo = () => {
           </div>
         </section>
 
-        <section id="sobre" className="px-4 w-full max-w-6xl mx-auto py-7">
+        <section id="sobre" className=" w-full max-w-6xl mx-auto py-6">
           <SobreMim />
         </section>
 
-        <section id="experiencia" className="px-4 w-full max-w-6xl mx-auto py-7">
+        <section id="experiencia" className=" w-full max-w-6xl mx-auto ">
           <Experiencia />
         </section>
 
@@ -51,7 +51,7 @@ export const Conteudo = () => {
         </section>
 
       
-        <section id="contato" className="px-4 w-full max-w-6xl mx-auto py-7">
+        <section id="contato" className=" w-full max-w-6xl mx-auto py-7">
           <Contato />
         </section>
 

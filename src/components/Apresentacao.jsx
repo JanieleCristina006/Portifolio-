@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export const Apresentacao = () => {
   return (
-    <section className="max-w-5xl mx-auto px-4 space-y-6 sm:space-y-8 text-left">
+    <section className=" mx-auto space-y-6 sm:space-y-8 text-left">
       {/* Título */}
       <motion.h1
         className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white leading-snug"

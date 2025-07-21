@@ -14,7 +14,7 @@ const links = [
   { id: "inicio", label: "Início", icon: <FiHome /> },
   { id: "sobre", label: "Sobre", icon: <FiUser /> },
   { id: "experiencia", label: "Experiência", icon: <FiEdit2 /> },
-  { id: "formacao", label: "Formação", icon: <FaGraduationCap /> },
+  // { id: "formacao", label: "Formação", icon: <FaGraduationCap /> },
   { id: "projetos", label: "Projetos", icon: <FiFolder /> },
   { id: "contato", label: "Contato", icon: <FiMail /> },
 ];

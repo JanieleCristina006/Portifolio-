@@ -1,36 +1,41 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import emailjs from "emailjs-com";
 import { motion } from "framer-motion";
 import Foto from './../assets/menina.png';
+import { ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 export const Contato = () => {
   const form = useRef();
 
   const sendEmail = (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    emailjs
-      .sendForm(
-        "service_90o4w4e",
-        "template_zwru7sh",
-        form.current,
-        "nqBfWnWy3IM9RL64W"
-      )
-      .then(
-        () => {
-          alert("✅ Obrigada pelo contato! Retornarei em breve 💌");
-          form.current.reset();
-        },
-        (error) => {
-          console.error(error);
-          alert("❌ Ocorreu um erro. Tente novamente.");
-        }
-      );
-  };
+  emailjs
+    .sendForm(
+      "service_90o4w4e",
+      "template_zwru7sh",
+      form.current,
+      "nqBfWnWy3IM9RL64W"
+    )
+    .then(
+      () => {
+        toast.success("Obrigada pelo contato! Retornarei em breve!");
+        form.current.reset();
+      },
+      (error) => {
+        console.error(error);
+        toast.error("❌ Ocorreu um erro. Tente novamente.");
+      }
+    );
+};
 
   return (
-       <section className="w-full min-h-screen bg-zinc-900 text-white px-4 sm:px-6 py-12">
-  {/* Título */}
+       
+     <>
+     <ToastContainer />
+        <section className="w-full min-h-screen bg-zinc-900 text-white px-4 sm:px-6 py-12">
+ 
   <motion.div
     className="mb-12 text-center max-w-3xl mx-auto"
     initial={{ opacity: 0, y: -20 }}
@@ -44,7 +49,6 @@ export const Contato = () => {
     </p>
   </motion.div>
 
-  {/* Grid responsivo */}
   <motion.div
     className="w-full max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 rounded-xl shadow-lg overflow-hidden bg-zinc-800"
     initial={{ opacity: 0, y: 30 }}
@@ -52,7 +56,7 @@ export const Contato = () => {
     viewport={{ once: true }}
     transition={{ duration: 0.6 }}
   >
-    {/* IMAGEM */}
+   
     <div className="hidden md:flex items-center justify-center bg-zinc-700">
       <img
         src={Foto}
@@ -61,7 +65,7 @@ export const Contato = () => {
       />
     </div>
 
-    {/* FORMULÁRIO */}
+    
     <div className="w-full p-6 sm:p-10 flex flex-col justify-center bg-zinc-800">
       <motion.h3
         className="text-xl sm:text-2xl font-semibold text-green-400 mb-6"
@@ -97,7 +101,7 @@ export const Contato = () => {
 
         <motion.button
           type="submit"
-          className="w-full bg-white text-black px-6 py-3 rounded-full hover:bg-green-400 hover:text-black transition-all duration-300 ease-in-out"
+          className="w-full bg-white text-black px-6 py-3 rounded-full hover:bg-green-400 hover:text-black transition-all duration-300 ease-in-out cursor-pointer"
           whileHover={{ scale: 1.05 }}
         >
           Enviar mensagem
@@ -106,6 +110,7 @@ export const Contato = () => {
     </div>
   </motion.div>
 </section>
+     </>
 
  
   );

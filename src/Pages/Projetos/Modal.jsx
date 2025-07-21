@@ -9,7 +9,7 @@ const Modal = ({ isOpen, onClose, projeto }) => {
     <AnimatePresence>
       {isOpen && (
         <Dialog as="div" className="relative z-50" open={isOpen} onClose={onClose}>
-          {/* Fundo escuro */}
+         
           <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" aria-hidden="true" />
 
           <div className="fixed inset-0 flex items-center justify-center p-4">
@@ -19,7 +19,7 @@ const Modal = ({ isOpen, onClose, projeto }) => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="bg-zinc-900 text-white p-6 rounded-xl shadow-xl max-w-2xl w-full relative"
+              className="bg-blue-950 text-white p-6 rounded-xl shadow-xl max-w-2xl w-full relative"
             >
              
               <button
@@ -34,10 +34,10 @@ const Modal = ({ isOpen, onClose, projeto }) => {
                 {projeto.titulo}
               </Dialog.Title>
 
-              {/* Descrição */}
+              
               <p className="text-sm text-gray-300 mb-4">{projeto.descricao}</p>
 
-              {/* Imagem */}
+              
               {projeto.imagem && (
                 <img
                   src={projeto.imagem}
@@ -46,7 +46,7 @@ const Modal = ({ isOpen, onClose, projeto }) => {
                 />
               )}
 
-              {/* Tecnologias */}
+              
               {projeto?.techs?.length > 0 && (
                 <div className="flex flex-wrap gap-2 text-xs font-medium mb-6">
                   {projeto.techs.map((tech, index) => (
@@ -60,9 +60,9 @@ const Modal = ({ isOpen, onClose, projeto }) => {
                 </div>
               )}
 
-              {/* Ações com tooltip */}
+              
               <div className="flex items-center gap-4">
-                {/* Live Preview */}
+                
                 {projeto.live && (
                   <a
                     href={projeto.live}
@@ -77,7 +77,7 @@ const Modal = ({ isOpen, onClose, projeto }) => {
                   </a>
                 )}
 
-                {/* GitHub */}
+               
                 {projeto.github && (
                   <a
                     href={projeto.github}

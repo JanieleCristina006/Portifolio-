@@ -119,3 +119,11 @@
 .embla__slide:not(.is-snapped) {
   opacity: 0.16;
 }
+
+
+@media (max-width: 480px) {
+  .embla {
+    --slide-size: 100%;
+    --slide-height: 12rem;
+  }
+}
