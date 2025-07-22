@@ -51,7 +51,7 @@ export const Conteudo = () => {
         </section>
 
       
-        <section id="contato" className=" w-full max-w-6xl mx-auto py-7">
+        <section id="contato" className="px-4 w-full max-w-6xl mx-auto py-7">
           <Contato />
         </section>
 

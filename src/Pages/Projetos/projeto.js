@@ -1,5 +1,6 @@
 import Projeto1 from '../../assets/refund.png';
 import Projeto2 from '../../assets/ponto.png';
+import Projeto3 from '../../assets/image.png';
 
 export const projeto = [
   {
@@ -20,4 +21,15 @@ export const projeto = [
     live: 'https://ponto-eletronico-wn8a.vercel.app/',
     techs: ['React', 'Tailwind CSS', 'Firebase']
   },
+
+   {
+  id: 3,
+  titulo: 'Adivinhe - Jogo da Palavra Misteriosa',
+  descricao: 'Jogo onde o usuário precisa adivinhar a palavra secreta com base em uma dica e número limitado de tentativas.',
+  imagem: Projeto3,
+  github: 'https://github.com/JanieleCristina006/Adivinhe', 
+  live: 'https://adivinhe-jade.vercel.app/', 
+  techs: ['React', 'CSS Modules']
+}
+
 ];
