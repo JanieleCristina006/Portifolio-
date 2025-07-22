@@ -1,6 +1,6 @@
 # 👩‍💻 Portfólio - Janiele Cristina
 
-![Capa do Portfólio](./image.png) 
+![Capa do Portfólio](./portifolio.png) 
 
 Portfólio desenvolvido com React e Tailwind CSS para apresentar meus projetos, habilidades, trajetória e formas de contato. Uma vitrine moderna que reflete minha identidade como desenvolvedora Front-End.
 
