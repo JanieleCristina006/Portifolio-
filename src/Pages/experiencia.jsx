@@ -1,13 +1,7 @@
 import { motion } from 'framer-motion'
 
 const experiencias = [
-  {
-    data: 'Nov 2024 – Fev 2025',
-    titulo: 'Desenvolvedora Front-End Jr',
-    empresa: 'Grupo Awtech',
-    local: 'Presencial · Alfenas, MG',
-    tecnologias: 'Vue.js, Git, entre outras.'
-  },
+ 
   {
     data: 'Mar 2024 – Ago 2024',
     titulo: 'Desenvolvedora / Mentora',

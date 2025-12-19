@@ -1,16 +1,23 @@
-import { Dialog } from '@headlessui/react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { FaGithub, FaTimes, FaEye } from 'react-icons/fa'
+import { Dialog } from "@headlessui/react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaGithub, FaTimes, FaEye } from "react-icons/fa";
 
 const Modal = ({ isOpen, onClose, projeto }) => {
-  if (!projeto) return null
+  if (!projeto) return null;
 
   return (
     <AnimatePresence>
       {isOpen && (
-        <Dialog as="div" className="relative z-50" open={isOpen} onClose={onClose}>
-         
-          <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" aria-hidden="true" />
+        <Dialog
+          as="div"
+          className="relative z-50"
+          open={isOpen}
+          onClose={onClose}
+        >
+          <div
+            className="fixed inset-0 bg-black/40 backdrop-blur-sm"
+            aria-hidden="true"
+          />
 
           <div className="fixed inset-0 flex items-center justify-center p-4">
             <Dialog.Panel
@@ -21,7 +28,6 @@ const Modal = ({ isOpen, onClose, projeto }) => {
               transition={{ duration: 0.2 }}
               className="bg-blue-950 text-white p-6 rounded-xl shadow-xl max-w-2xl w-full relative"
             >
-             
               <button
                 onClick={onClose}
                 className="absolute cursor-pointer top-4 right-4 text-green-500 hover:text-white text-xl transition-colors"
@@ -29,24 +35,27 @@ const Modal = ({ isOpen, onClose, projeto }) => {
                 <FaTimes />
               </button>
 
-            
               <Dialog.Title className="text-2xl font-bold text-green-500 mb-1">
                 {projeto.titulo}
               </Dialog.Title>
 
-              
               <p className="text-sm text-gray-300 mb-4">{projeto.descricao}</p>
 
-              
-              {projeto.imagem && (
-                <img
-                  src={projeto.imagem}
-                  alt={`Preview do projeto ${projeto.titulo}`}
-                  className="rounded-lg mb-4"
-                />
+              {projeto.imagem && projeto.live && (
+                <a
+                  href={projeto.live}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block mb-4 group"
+                >
+                  <img
+                    src={projeto.imagem}
+                    alt={`Preview do projeto ${projeto.titulo}`}
+                    className="rounded-lg transition-transform duration-300 group-hover:scale-[1.02] cursor-pointer"
+                  />
+                </a>
               )}
 
-              
               {projeto?.techs?.length > 0 && (
                 <div className="flex flex-wrap gap-2 text-xs font-medium mb-6">
                   {projeto.techs.map((tech, index) => (
@@ -60,9 +69,7 @@ const Modal = ({ isOpen, onClose, projeto }) => {
                 </div>
               )}
 
-              
               <div className="flex items-center gap-4">
-                
                 {projeto.live && (
                   <a
                     href={projeto.live}
@@ -77,7 +84,6 @@ const Modal = ({ isOpen, onClose, projeto }) => {
                   </a>
                 )}
 
-               
                 {projeto.github && (
                   <a
                     href={projeto.github}
@@ -97,7 +103,7 @@ const Modal = ({ isOpen, onClose, projeto }) => {
         </Dialog>
       )}
     </AnimatePresence>
-  )
-}
+  );
+};
 
-export default Modal
+export default Modal;

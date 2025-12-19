@@ -1,7 +1,8 @@
 import Projeto1 from '../../assets/refund.png';
 import Projeto2 from '../../assets/ponto.png';
 import Projeto3 from '../../assets/image.png';
-import Car from '../../assets/img_car.jpg'
+import Car from '../../assets/img_car.jpg';
+import DevalunoImg from '../../assets/DevAluno.png'
 
 export const projeto = [
 
@@ -15,14 +16,23 @@ export const projeto = [
     techs: ['React','Supabase']
   },
   {
-    id: 2,
-    titulo: 'Refund - Sistema de Reembolso',
-    descricao: 'Projeto para registrar e acompanhar reembolsos com categorias e valor.',
-    imagem: Projeto1,
-    github: 'https://github.com/JanieleCristina006/refund',
-    live: 'https://refund-app.vercel.app',
-    techs: ['HTML', 'CSS', 'JavaScript']
-  },
+  id: 2,
+  titulo: 'Devaluno – CRUD de Alunos',
+  descricao: 'Aplicação Full Stack para cadastro, listagem, edição e exclusão de alunos. Desenvolvida com Node.js, Express e MySQL, utilizando Handlebars para renderização server-side e deploy em Render + Railway.',
+  imagem: DevalunoImg,
+  github: 'https://github.com/JanieleCristina006/node-express-crud-alunos',
+  live: 'https://node-express-crud-alunos.onrender.com/',
+  techs: [
+    'Node.js',
+    'Express',
+    'MySQL',
+    'Handlebars',
+    'dotenv',
+    'Render',
+    'Railway'
+  ]
+},
+ 
   {
     id: 3,
     titulo: 'PontoWeb - Sistema de Ponto Eletrônico',
@@ -41,6 +51,8 @@ export const projeto = [
   github: 'https://github.com/JanieleCristina006/Adivinhe', 
   live: 'https://adivinhe-jade.vercel.app/', 
   techs: ['React', 'CSS Modules']
-}
+},
+
+
 
 ];
