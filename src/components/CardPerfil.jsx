@@ -75,7 +75,7 @@ export const CardPerfil = () => {
         </a>
 
         <a
-          href="/Curriculo-Janiele.pdf"
+          href="/janiele-cristina_curriculo.pdf"
           download
           className="tooltip-cv flex items-center justify-center gap-2 bg-zinc-900 text-white font-medium px-4 py-3 rounded-lg hover:bg-zinc-700 transition"
           data-pr-tooltip="Baixar Currículo"
