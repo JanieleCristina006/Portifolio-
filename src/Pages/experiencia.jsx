@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 const experiencias = [
  
   {
-    data: 'Mar 2024 – Ago 2024',
+    data: 'Mar 2024 – Out 2025',
     titulo: 'Desenvolvedora / Mentora',
     empresa: 'Programar Com Você',
     local: 'Estágio Remoto',

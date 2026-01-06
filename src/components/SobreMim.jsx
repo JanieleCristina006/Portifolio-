@@ -78,7 +78,7 @@ export const SobreMim = () => {
               <p className="text-sm">
                 <span className="font-semibold text-white">Cruzeiro do Sul Virtual</span><br />
                 Bacharelado em Ciência da Computação<br />
-                <span className="text-xs italic text-gray-400">Nov 2023 – Dez 2025 • Em andamento</span>
+                <span className="text-xs italic text-gray-400">Nov 2023 – Dez 2026 • Em andamento</span>
               </p>
               <p className="text-sm mt-2">
                 <span className="font-semibold text-white">UNIFENAS</span><br />
