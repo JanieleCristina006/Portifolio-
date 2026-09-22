@@ -2,7 +2,6 @@ import EmblaCarousel from "./EmblaCarousel";
 import "./base.css";
 import "./sandbox.css";
 import "./embla.css"
-import Header from "./Header";
 
 
 
@@ -15,7 +14,6 @@ export const Projetos = () => {
 
   return (
     <>
-       <Header />
        <EmblaCarousel slides={SLIDES} options={OPTIONS} />
     </>
   )
